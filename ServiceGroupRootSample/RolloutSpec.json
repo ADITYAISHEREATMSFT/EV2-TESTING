@@ -11,7 +11,7 @@
             }
         },
         "notification": {
-            "email": { "to": "kumarnitin@microsoft.com" }
+            "email": { "to": "adity@microsoft.com" }
         }
     },
     "OrchestratedSteps":  [

@@ -25,17 +25,17 @@
     ],
     "ServiceResourceGroups": [
       {
-        "AzureResourceGroupName": "kumarnitin",
+        "AzureResourceGroupName": "EV2-testing-rg",
         "Location": "East US",
         "InstanceOf": "MyServiceResourceDefinition",
-        "AzureSubscriptionId": "fb9e7fe1-af44-47ef-852d-2d086a069327",
+        "AzureSubscriptionId": "7adeba7f-4949-4201-b9c2-59283fcb5e11",
         "ServiceResources": [
-            {
+          {
             "Name": "DeployMonitorConfigs",
             "InstanceOf": "MyServiceWebApp",
             "ArmParametersPath": "Parameters\\ArmParams.json",
             "RolloutParametersPath": "RolloutParameters\\RolloutParams.json"
-            }
+          }
         ]
       }
     ]

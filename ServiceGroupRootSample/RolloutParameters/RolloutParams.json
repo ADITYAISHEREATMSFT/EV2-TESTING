@@ -1,0 +1,43 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "extensions": [
+    {
+      "Name": "HealthAndMonitor",
+      "Type": "Microsoft.Geneva.Health/HealthAndMonitor",
+      "Version": "2020-06-01",
+      "ConnectionProperties": {
+        "MaxExecutionTime": "PT30M",
+        "Authentication": {
+          "Type": "CertificateAuthentication",
+          "Reference": {
+            "Provider": "AzureKeyVault",
+            "Parameters": {
+              "SecretId": "https://kumarnitinkeyvaulttest.vault.azure.net/secrets/Ev2HealthExtension"
+            }
+          }
+        }
+      },
+      "Payloadproperties": {
+        "configurationPackage": {
+          "Reference": { "Path": "Packages\\MonitorConfigs.zip" }
+        },
+        "monitoringAccountName": {
+          "Value": "kumarnitinAscintTargetAccountAzInt"
+        },
+        "topologyConfigurationPath": {
+          "Value": "Monitors\\Topology"
+        },
+        "monitorV1ConfigurationPath": {
+          "Value": "Monitors\\V1"
+        },
+        "monitorV2ConfigurationPath": {
+          "Value": "Monitors\\V2"
+        },
+        "healthMonitorConfigurationPath": {
+          "Value": "Monitors\\Health"
+        }
+      }
+    }
+  ]
+}

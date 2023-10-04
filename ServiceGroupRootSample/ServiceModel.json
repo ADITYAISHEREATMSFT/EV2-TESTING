@@ -1,0 +1,42 @@
+{
+    "$schema": "http://schema.express.azure.com/schemas/2015-01-01-alpha/ServiceModel.json",
+    "contentVersion": "0.0.0.1",
+
+    "ServiceMetadata": {
+        "serviceGroup": "Monitor Config Deployment",
+        "environment": "Test"
+    },
+    "ServiceResourceGroupDefinitions": [
+    {
+        "Name": "MyServiceResourceDefinition",
+        "ServiceResourceDefinitions": [
+        {
+            "Name":"MyServiceWebApp",
+            "ComposedOf":
+            {
+                "Arm":
+                {
+                    "TemplatePath":"Templates\\HealthAndMonitor.Template.json"
+                }
+            }
+        }
+        ]
+    }
+    ],
+    "ServiceResourceGroups": [
+      {
+        "AzureResourceGroupName": "kumarnitin",
+        "Location": "East US",
+        "InstanceOf": "MyServiceResourceDefinition",
+        "AzureSubscriptionId": "fb9e7fe1-af44-47ef-852d-2d086a069327",
+        "ServiceResources": [
+            {
+            "Name": "DeployMonitorConfigs",
+            "InstanceOf": "MyServiceWebApp",
+            "ArmParametersPath": "Parameters\\ArmParams.json",
+            "RolloutParametersPath": "RolloutParameters\\RolloutParams.json"
+            }
+        ]
+      }
+    ]
+}

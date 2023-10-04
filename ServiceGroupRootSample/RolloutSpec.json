@@ -1,0 +1,25 @@
+{
+    "$schema": "http://schema.express.azure.com/schemas/2015-01-01-alpha/RolloutSpec.json",
+    "ContentVersion": "1.0.0.0",
+    "RolloutMetadata": {
+        "ServiceModelPath": "ServiceModel.json",
+        "Name": "Test Rollout with Ev2",
+        "RolloutType": "Major",
+        "BuildSource": {
+            "Parameters": {
+                "VersionFile": "buildver.txt"
+            }
+        },
+        "notification": {
+            "email": { "to": "kumarnitin@microsoft.com" }
+        }
+    },
+    "OrchestratedSteps":  [
+        {    
+            "Name": "HealthAndMonitor",
+            "TargetType": "ServiceResource",
+            "TargetName": "DeployMonitorConfigs",
+            "Actions": [ "Extension/HealthAndMonitor" ]   
+        }
+    ]
+}
